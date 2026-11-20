@@ -23,6 +23,8 @@
     <hr>
     <br><br>
     <form action="procesar_historia_clinica.php" method="post">
+        <fieldset>
+        <legend>Datos del Paciente</legend>
         <label for="nombres">Nombres completos del paciente:</label>
         <input type="text" id="nombres" name="nombres" required><br><br>
         <label for="apellidos">Apellidos completos del paciente:</label>
@@ -38,7 +40,9 @@
         <input type="tel" id="telefono" name="telefono" required><br><br>
         <label for="correo">Correo electrónico:</label>
         <input type="email" id="correo" name="correo" required><br><br>
-
+        </fieldset>
+        <fieldset>
+        <legend>Información adicional</legend>
         <label for="genero">Género:</label> 
             <input type="radio" name="genero" value="masculino" required> Masculino
             <input type="radio" name="genero" value="femenino" required> Femenino
@@ -56,11 +60,26 @@
             <option value="O+">O+</option>
             <option value="O-">O-</option>
         </select><br><br>
+        <label for="contacto_emergencia">Contacto de emergencia:</label>
+        <input type="text" id="contacto_emergencia" name="contacto_emergencia" required><br><br>
+        </fieldset>
+        <fieldset>
+        <legend>Datos médicos</legend>
         <label for="alergias">Alergias conocidas:</label>
         <textarea id="alergias" name="alergias" rows="4" cols="50" required></textarea><br><br>
         <label for="medicamentos">Medicamentos que está tomando actualmente:</label>
         <textarea id="medicamentos" name="medicamentos" rows="4" cols="50" required></textarea><br><br>
-
+        <label for="enfermedades">Enfermedades previas o crónicas:</label>
+        <textarea id="enfermedades" name="enfermedades" rows="4" cols="50" required></textarea><br><br>
+        <label for="cirugias">Cirugías previas:</label>
+        <textarea id="cirugias" name="cirugias" rows="4" cols="50" required></textarea>
+        <br><br>
+        <label for="archivo_adjunto">Certificado médico de otras instituciones:</label>
+        <br><br>
+        <input type="file" id="archivo_adjunto" name="archivo_adjunto" accept=".pdf,.doc,.docx,.jpg,.png"><br><br>
+        </fieldset>
+        <fieldset>
+        <legend>Información de la consulta</legend>
         <label for="sede">Sede del Hospital al que va:</label>
         <select id="sede" name="sede" required>
             <option value="" disabled selected>Seleccione</option>
@@ -71,10 +90,17 @@
         <label for="fecha_consulta">Fecha de la consulta:</label>
         <input type="date" id="fecha_consulta" name="fecha_consulta" required><br><br>  
         <br><br>
-        <label for="diagnostico">Diagnóstico:</label>
-        <textarea id="diagnostico" name="diagnostico" rows="4" cols="50" required></textarea><br><br>
-        <label for="archivo_adjunto">Certificado médico de otras instituciones:</label>
-        <input type="file" id="archivo_adjunto" name="archivo_adjunto" accept=".pdf,.doc,.docx,.jpg,.png"><br><br>
-        <input type="submit" value="Guardar Historia Clínica">
+        <label for="sintomas">Síntomas presentados por el paciente:</label>
+        <textarea id="sintomas" name="sintomas" rows="4" cols="50" required></textarea><br><br>
+        </fieldset> 
+        <br><br>
+        <input type="submit" value="Guardar Historia Clínica"><br><br>
+    </form>
+    <fieldset>
+        <legend>Información de contacto</legend>
+        <p>Teléfono: +593 2 123 4567</p>
+        <p>Correo electrónico: correo@example.com</p>
+        <p>Fecha: 2023-10-01</p>
+    </fieldset>
 </body>
 </html>
