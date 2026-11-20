@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/img/hospital.png" type="image/png">
-    <img src="/img/hospital.png" alt="HOSPITAL PEPITO" width="70">
+    <link rel="icon" href="img/hospital.png" type="image/png">
+    <img src="/img/hospital.png" alt="Logo Hospital Pepito" width="70">
     <title>Historia Clínica</title>
 </head>
 <body>
     <!--CABECERA-->
     <header>
-        <h1  style="display: flex;justify-content: center;">  HOSPITAL PEPITO </h1>
+        <img src="Historia Clínica/img/edificio-del-hospital.png" alt="HOSPITAL PEPITO" width="70">
+        <h1 style="display: flex;justify-content: center;">  HOSPITAL PEPITO </h1>
         <p style="display: flex;justify-content: center;">Cuidando de su salud desde 1985</p>
     </header>
     <!--BARRA DE NAVEGACION-->
     <hr>
     <nav>
         <a href="../index.html">Home</a> |
-        <a href="pages/historia_clínica.html">Historia Clínica</a> |
-           
+        <a href="http://127.0.0.1:5500/Historia%20Cl%C3%ADnica/pages/historia_cl%C3%ADnica.html">Historia Clínica</a> |      
     </nav>
     <hr>
     <br><br>
-    <form action="procesar_historia_clinica.php" method="post">
+    <!-- Se añade oninput para actualizar en tiempo real la etiqueta <output> -->
+    <form action="procesar_historia_clinica.php" method="post" oninput="resumen_paciente.value = (nombres.value || apellidos.value) ? `${nombres.value} ${apellidos.value} (${edad.value || '?'} años)` : 'Sin datos ingresados'">
         <fieldset>
         <legend>Datos del Paciente</legend>
         <label for="nombres">Nombres completos del paciente:</label>
@@ -34,7 +35,7 @@
         <label for="fecha_nacimiento">Fecha de nacimiento:</label>
         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
         <br><br>
-        <label for="direccion">Dirección domiciliria:</label>
+        <label for="direccion">Dirección domiciliaria:</label>
         <input type="text" id="direccion" name="direccion" required> <br><br>
         <label for="telefono">Teléfono de contacto:</label>
         <input type="tel" id="telefono" name="telefono" required><br><br>
@@ -60,8 +61,14 @@
             <option value="O+">O+</option>
             <option value="O-">O-</option>
         </select><br><br>
-        <label for="contacto_emergencia">Contacto de emergencia:</label>
-        <input type="text" id="contacto_emergencia" name="contacto_emergencia" required><br><br>
+        <label for="contacto_emergencia">Contacto de emergencia (parentesco o nombre):</label>
+        <input type="text" id="contacto_emergencia" name="contacto_emergencia" list="sugerencias_contacto" required>
+        <datalist id="sugerencias_contacto">
+            <option value="Madre / Padre"></option>
+            <option value="Cónyuge / Pareja"></option>
+            <option value="Hermano / Hermana"></option>
+            <option value="Hijo / Hija"></option>
+        </datalist><br><br>
         </fieldset>
         <fieldset>
         <legend>Datos médicos</legend>
@@ -83,9 +90,9 @@
         <label for="sede">Sede del Hospital al que va:</label>
         <select id="sede" name="sede" required>
             <option value="" disabled selected>Seleccione</option>
-            <option value="sede1">Sede Valle de los chillos</option>
+            <option value="sede1">Sede Valle de los Chillos</option>
             <option value="sede2">Sede Quito Tennis</option>
-            <option value="sede3">Sede dentro histórico</option>
+            <option value="sede3">Sede Centro Histórico</option>
         </select><br><br>
         <label for="fecha_consulta">Fecha de la consulta:</label>
         <input type="date" id="fecha_consulta" name="fecha_consulta" required><br><br>  
@@ -94,6 +101,10 @@
         <textarea id="sintomas" name="sintomas" rows="4" cols="50" required></textarea><br><br>
         </fieldset> 
         <br><br>
+        <p>
+            <strong>Paciente en registro:</strong>
+            <output name="resumen_paciente" for="nombres apellidos edad">Sin datos ingresados</output>
+        </p>
         <input type="submit" value="Guardar Historia Clínica"><br><br>
     </form>
     <fieldset>
